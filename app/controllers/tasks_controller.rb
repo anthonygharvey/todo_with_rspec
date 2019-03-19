@@ -28,6 +28,29 @@ class TasksController < ApplicationController
 		end
 	end
 
+	def update
+		respond_to do |format|
+			if @task.update(task_params)
+				format.html { redirect_to task_path(@task) }
+			else
+				format.html { render :edit }
+			end
+		end
+		# if @task.update(task_params)
+		# 	redirect_to task_path(@task)
+		# else
+		# 	render :edit
+		# end
+	end
+
+	def destroy
+		if @task.destroy
+			respond_to do |format|
+				format.html { redirect_to tasks_path }
+			end
+		end
+	end
+
 	private
 
 	def set_task
