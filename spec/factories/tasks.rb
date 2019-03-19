@@ -18,7 +18,9 @@ FactoryBot.define do
 	# 	priority nil
 	# end
 
-  factory :task do
+	factory :task do
+		association :user
+		due_date { DateTime.now + 3.days }
     name "buy beer"
     priority 2
 
